@@ -1,7 +1,7 @@
 <template>
 <div id="app">
 
-    <h1>hello world</h1>
+    <h1>hello 你好</h1>
 
 </div>
 </template>
