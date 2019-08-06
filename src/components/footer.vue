@@ -32,15 +32,18 @@ export default {
             margin-right: 3%;
             padding: .5rem .2rem;
             border-radius: .6rem;
+            font-size: .875rem;
+
         }
     }
     span{
         background-color: rgb(145, 145, 145);
         position: absolute;
         right: 4%;
-        top: -90%;
+        top: -75%;
         padding: 1.3rem 1rem;
         border-radius: 2rem;
+        font-size: .875rem;
     }
 }
 </style>

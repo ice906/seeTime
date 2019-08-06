@@ -1,5 +1,5 @@
 export default{
-    path: '/home',
-    component: ()=>import('../pages/home/Home'),
+    path: '/diagram',
+    component: ()=>import('../pages/diagram/Diagram'),
     children:[]
 }

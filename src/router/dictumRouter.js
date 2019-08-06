@@ -1,5 +1,5 @@
 export default{
-    path: '/home',
-    component: ()=>import('../pages/home/Home'),
+    path: '/dictum',
+    component: ()=>import('../pages/dictum/Dictum'),
     children:[]
 }
