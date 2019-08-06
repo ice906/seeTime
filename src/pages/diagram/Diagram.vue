@@ -1,6 +1,6 @@
 <template>
 <div class="page" id="diagram">
-    <h1>组图页面</h1>
+    <h1>组图页面!</h1>
 </div>
 </template>
 
