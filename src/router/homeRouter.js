@@ -1,4 +1,5 @@
-export default {
+export default{
     path: '/home',
-    componet: ()=>import('../pages/home/App')
+    component: ()=>import('../pages/home/Home'),
+    children:[]
 }
