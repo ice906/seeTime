@@ -1,19 +1,13 @@
 <template>
-    <div class="page subpage" id="photoShow">
+    <div class="page subpage" id="story">
        <div class="return">
            <span @click="returnAction">返回</span>
        </div>
        <div class="title">
-            <span>组图标题</span>
+            <span>故事标题</span>
         </div>
-        <div class="photo-one">
-            <span></span>
-        </div>
-        <div class="photo-two">
-            <span></span>
-        </div>
-        <div class="photo-three">
-            <span>组图</span>
+        <div class="story">
+            <span>故事</span>
         </div>
     </div>
 </template>
@@ -28,7 +22,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-#photoShow{
+#story{
     .return{
         position: absolute;
         left: 25px;
@@ -62,12 +56,13 @@ export default {
             color: #FFFFFf
         }
     }
-    .photo-one{
-        position: absolute;
-        left: 25px;
-        top: 174px;
-        width: 291px;
-        height: 400px;
+   .story{
+       position: absolute;
+       left: 27px;
+       top: 121px;
+        margin-bottom: 22px;
+        width: 321px;
+        height: 754px;
         line-height: 20px;
         border-radius: 8px;
         background-color: rgba(145, 145, 145, 1);
@@ -77,44 +72,12 @@ export default {
         box-shadow: 5px 6px 14px 1px rgba(170, 170, 170, 1);
         font-family: Arial;
         border: 1px solid rgba(255, 255, 255, 0);
-    }
-    .photo-two{
-        position: absolute;
-        left: 42px;
-        top: 158px;
-        width: 291px;
-        height: 400px;
-        line-height: 20px;
-        border-radius: 8px;
-        background-color: rgba(145, 145, 145, 1);
-        color: rgba(16, 16, 16, 1);
-        font-size: 14px;
-        text-align: center;
-        box-shadow: 5px 6px 14px 1px rgba(170, 170, 170, 1);
-        font-family: Arial;
-        border: 1px solid rgba(255, 255, 255, 0);
-    }
-    .photo-three{
-        position: absolute;
-        left: 58px;
-        top: 144px;
-        width: 291px;
-        height: 400px;
-        line-height: 20px;
-        border-radius: 8px;
-        background-color: rgba(145, 145, 145, 1);
-        color: rgba(16, 16, 16, 1);
-        font-size: 14px;
-        text-align: center;
-        box-shadow: 5px 6px 14px 1px rgba(170, 170, 170, 1);
-        font-family: Arial;
-        border: 1px solid rgba(255, 255, 255, 0);
-         span{
+        span{
             font-family: Arial;
             font-size: 14px;
-            line-height: 400px;
+            line-height: 754px;
             color: #FFFFFf
         }
-    }
+   }
 }
 </style>

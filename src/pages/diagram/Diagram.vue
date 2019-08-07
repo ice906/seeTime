@@ -1,24 +1,29 @@
 <template>
-<div class="page" id="diagram">
-    <div class="scenery">
-        <span>候风物</span>
-    </div>
-    <div class="date">
-        <span>农历日期</span>
-    </div>
-    <div class="time">
-        <span>日期</span>
-    </div>
-    <div class="return">
-        <span>回到今天</span>
-    </div>
-    <div class="photo">
-        <span>组图</span>
-        <h1>标题</h1>
-        <div class="detail">
-            <span>详情</span>
+<div>
+    <div class="page" id="diagram">
+        <router-link to="/diagram/scenery" class="scenery">
+            <span>候风物</span>
+        </router-link>
+        <router-link to="/diagram/scenery" class="date">
+            <span>农历日期</span>
+        </router-link>
+        <div class="time">
+            <span>日期</span>
         </div>
+        <router-link to="/home" class="return">
+            <span>回到今天</span>
+        </router-link>
+        <router-link to="/diagram/photoShow" class="photo">
+            <span>组图</span>
+            <h1>标题</h1>
+            <div class="detail">
+                <span>详情</span>
+            </div>
+        </router-link>
     </div>
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+        <router-view></router-view>
+    </transition>
 </div>
 </template>
 
@@ -106,6 +111,7 @@ export default {
         height: 238px;
         border-radius: 8px;
         background-color: rgba(145, 145, 145, 1);
+        box-shadow: 5px 6px 14px 1px rgba(170, 170, 170, 1);
         text-align: center;
         border: 1px solid rgba(255, 255, 255, 0);
          span{
