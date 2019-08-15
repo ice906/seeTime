@@ -11,6 +11,7 @@ export default {
         {
             path: 'photoShow',
             component: ()=>import('../pages/diagram/children/photoShow'),
-        }
+        },
+        
     ]
 }

@@ -1,7 +1,12 @@
 export default {
+    //首页
     path: '/home',
     component: ()=>import('../pages/home/Home'),
+    
+   /*  path: '/index',
+    component: ()=>import('../pages/index'), */
     children:[
+        
         //详情
         {
             path: '/home/detial',
@@ -29,8 +34,15 @@ export default {
         },
         //头像
         {
-            path: '/home/portrait',
-            component: ()=>import('../pages/home/children/portrait')
+            path:"/home/setting",
+            component: ()=>import("../pages/setting/Setting"),
+            children: [
+                //登录
+                {
+                    path: "/setting/login",
+                    component: ()=>import("../pages/setting/children/login"),
+                },
+            ]
         },
         
     ]

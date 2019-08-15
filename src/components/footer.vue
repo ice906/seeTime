@@ -6,7 +6,7 @@
             <i>{{item.id}}</i>
         </router-link>
     </ul>
-    <router-link to="/home/portrait">
+    <router-link to="/home/setting">
         <span></span>
     </router-link>
 </div>

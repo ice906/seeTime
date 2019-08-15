@@ -2,15 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import home from './homeRouter'
-// import diagram from './diagramRouter'
-// import dictum from './dictumRouter'
+import diagram from './diagramRouter'
+import dictum from './dictumRouter'
 
 Vue.use(Router);
 
 const routes = [
   home,
-  // diagram,
-  // dictum,
+  diagram,
+  dictum,
   {
     path: '/',
     redirect:'/home'
