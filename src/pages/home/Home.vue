@@ -1,46 +1,50 @@
 <template>
+
 <div class="page" id="home">
-    <span class="terms">二十四节气</span>
-    <span class="detial">详情</span>
-    
+
+    <span class="terms">今日大暑</span>
+    <span class="detial"></span>
+
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+        <router-view></router-view>
+    </transition>
 </div>
+
 </template>
 
 <script>
-/* import footer from '../../components/footer'
 export default {
-    components: {
-        [footer.name]: footer
-    }
-} */
+    
+}
 </script>
 
 <style lang="scss" scoped>
 #home{
-    border:1px solid transparent;
-    position: relative;
     height: 100%;
+    position: relative;
     color: #fff;
-
+    background: url('/images/home/banner@3x.png') no-repeat;
+    background-size: cover;
     span{
         display: block;
         position: absolute;
-        background-color: rgb(145, 145, 145);
     }
     .terms{
         text-align: center;
-        line-height: 1.7rem;
+        font-size: 2rem;
+        line-height:3rem;
         width: 1.875rem;
         padding: .56rem;
-        border-radius: .425rem;
         top: 13%;
         left: 45%;
     }
     .detial{
-        padding: .5rem .2rem;
-        border-radius: 1.5rem;
-        bottom: 22%;
-        right: 7%;
+        width: 20px;
+        height: 17px;
+        background: url('/images/home/today_eye_icon@3x.png') no-repeat;
+        background-size: cover;
+        bottom: 24%;
+        right: 13%;
     }
 }
 </style>

@@ -1,18 +1,30 @@
 <template>
 <div class="footer">
     <ul>
-        <li>点赞</li>
-        <li>收藏</li>
-        <li>评论</li>
-        <li>分享</li>
+        <router-link v-for="item in homeList" :key="item.id" :to="item.path">
+            <em :style="{backgroundImage:'url('+item.bgImage+')'}"></em>
+            <i>{{item.id}}</i>
+        </router-link>
     </ul>
-    <span>头像</span>
+    <router-link to="/home/portrait">
+        <span></span>
+    </router-link>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'see-bottom'
+    name: 'see-bottom',
+    data(){
+        return {
+            homeList: [
+                {id:1, bgImage:'/images/home/today_like_icon@3x.png', path:'/home/thumbs'},
+                {id:2, bgImage:'/images/home/today_collect_icon@3x.png', path:'/home/collection'},
+                {id:3, bgImage:'/images/home/today_comment_icon@3x.png', path:'/home/comment'},
+                {id:4, bgImage:'/images/home/today_share_icon@3x.png', path:'/home/share'}
+            ]
+        }
+    }
 }
 </script>
 
@@ -21,26 +33,33 @@ export default {
     display: block;
     position: absolute;
     width: 100%;
-    bottom: 8%;
+    left: 0;
+    bottom: 5%;
     color: #fff;
     ul{
-        margin-left: 6%;
+        margin-left: 10%;
         display:flex;
-        li{
-            background-color: rgb(145, 145, 145);
-            text-align: center;
+        a{
             margin-right: 3%;
-            padding: .5rem .2rem;
-            border-radius: .6rem;
+            display: flex;
+            em,i{
+                width: 18px;
+                height: 17px;
+            }
+            em{
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
         }
     }
     span{
-        background-color: rgb(145, 145, 145);
+        background: url('/images/home/today-photo@3x.png') no-repeat;
+        background-size: cover;
         position: absolute;
-        right: 4%;
-        top: -90%;
-        padding: 1.3rem 1rem;
-        border-radius: 2rem;
+        width: 51px;
+        height: 50px;
+        right: 10%;
+        bottom: 0;
     }
 }
 </style>
