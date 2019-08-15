@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import home from './homeRouter'
 import diagram from './diagramRouter'
 import dictum from './dictumRouter'
-import login from "./loginRouter"
+import setting from "./settingRouter"
 
 Vue.use(Router);
 
@@ -12,7 +12,7 @@ const routes = [
   home,
   diagram,
   dictum,
-  login,
+  setting,
   {
     path: '/',
     redirect:'/home'
