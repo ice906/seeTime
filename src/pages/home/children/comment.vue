@@ -1,13 +1,20 @@
 <template>
 <div class="home-comment page subpage">
 
-    <div class="back" @click="backAction"></div>
+    <router-link to="/home">
+        <div class="back"></div>
+    </router-link>
     <div class="thumb-btn">
 
         <em>通知中心</em>
         <i>
-            <span>评论</span>
-            <span>点赞</span>
+            <router-link to="/home/comment">
+                <span>评论</span>
+            </router-link>
+            <router-link to="/home/thumbs">
+                <span>点赞</span>
+            </router-link>
+            
         </i>
     </div>
     <div class="content">
@@ -48,11 +55,6 @@ export default {
                 {img:"/images/notification_center/Center_user4@3x.png", message:"穿破的格子衫", tip:"仁者不忧，威者不努，信者不言", com:"燕雀安知鸿鹄之志！", time:"2019/8/15 11:44", id:8}
             ]      
         }
-    },
-    methods: {
-        backAction(){
-            this.$router.back();
-        }
     }
 }
 </script>
@@ -85,9 +87,14 @@ export default {
             line-height: 37px;
             float: right;
             width: 32%;
+            display: flex;
+            justify-content: space-around;
             span{
+                display: block;
                 font-size: 14px;
-                padding-left: 24%;
+            }
+            :nth-child(1) span{
+                border-bottom: 2px solid #555;
             }
         }
     }
