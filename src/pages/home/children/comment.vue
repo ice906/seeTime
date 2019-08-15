@@ -20,7 +20,7 @@
     <div class="content">
         <ul>
             <li v-for="item in thumbList" :key="item.id">
-                <img :src=item.img alt=""></img>
+                <img :src=item.img alt=""/>
                 <em>
                     <span>{{item.message}}</span>
                     <p>

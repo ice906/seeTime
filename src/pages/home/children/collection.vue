@@ -121,8 +121,6 @@ export default {
                 height: 38px;
                 background: url('/images/home_to_right/today-line@3x.png') no-repeat;
                 background-size: cover;
-                em{
-                }
                 i{
                     float: right;
                 }
