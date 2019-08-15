@@ -3,7 +3,10 @@
 <div class="page" id="home">
 
     <span class="terms">今日大暑</span>
-    <span class="detial"></span>
+
+    <router-link to="/home/detial">
+        <span class="detial"></span>
+    </router-link>
 
     <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
         <router-view></router-view>
