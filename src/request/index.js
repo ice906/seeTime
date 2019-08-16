@@ -1,12 +1,13 @@
 import axios from "axios"
+import api from './api'
 export const get = (url, params = {})=>{
   return new Promise((resolve,reject)=>{
     axios.get(url, {
         params: params,
-        baseURL: "http://localhost:8080",
+        baseURL: api.HOST,
     })
     .then(response=>{
-        if (response.status === 200 && response.data.status === 0) {
+        if (response.request.status === 200 && response.request.timeout === 0) {
             resolve(response.data);
         }else{
             console.log("请求失败!~");
@@ -21,7 +22,7 @@ export const get = (url, params = {})=>{
 export const post = async(url, params = {})=>{
     try {
         let response = await axios.post(url, params, {
-            baseURL: "http://localhost:8080"
+            baseURL: "api.Host"
         });
         if (response.status === 200 && response.data.status === 0) {
             return response.data;

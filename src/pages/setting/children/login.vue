@@ -9,16 +9,16 @@
             <h2>验证码登录</h2>
             <div class="box-center">
               <div class="input1">
-                  手机号<input type="text" v-model="value">
+                  手机号<input type="text" v-model="phone">
               </div>
-              <button class="btn" @click = "sendAction">发送验证码</button>
+              <button class="btn" @click = "sendAction" :disabled="disabled">{{btntxt}}</button>
             </div>
             <div class="box-center2">
-                  验证码<input type="password">
+                  验证码<input type="text" placeholder="发送验证码后自动获取" :value="code">
             </div>
 
             <div class="box2">
-                <button class="btnAction" @click="loginAction">登录</button>
+                <button class="btnAction" @click="loginAction(code)" >登录</button>
             </div>
 
             <div class="box3">
@@ -44,15 +44,25 @@
 </template>
 
 <script>
-import Header from "../common/header"
+import Header from "../common/header";
+import { setInterval } from 'timers';
+import {mapState} from "vuex"
 export default {
   components:{
     [Header.name]: Header,
   },
+  computed:{
+    ...mapState({
+      code:state => state.login.code,
+    })
+  },
   data(){
     return{
+        disabled:false,
+        time:0,
+        btntxt:"发送验证码",
+        phone:"",
         checkAction: false,
-        value:"",
         lists: [
           {id:1 , img:"/images/phone_login/login_QQ_icon@3x.png"},
           {id:2 , img:"/images/phone_login/login-weixin_icon@3x.png"},
@@ -63,20 +73,48 @@ export default {
   methods: {
      // 发送验证码
     sendAction(){
-        // 得到验证码，验证数据格式，是不是电话号码
-        if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.value))){
-            console.log("输入有误!");
-        }
-        else{
-            // 正确就执行action事件请求code
-            console.log("输入正确!");
+        var reg=11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
+        //var url="/nptOfficialWebsite/apply/sendSms?mobile="+this.ruleForm.phone;
+        if(this.phone==''){
+            alert("请输入手机号码");
+        }else if(!reg.test(this.phone)){
+            alert("手机格式不正确");
+        }else{
+            this.time=5;
+            this.disabled=true;
+            this.timer();
+            this.$store.dispatch('login/requestLoginCode',{phone:String(this.phone)});
         }
     },
-    loginAction(){
-      this.checkAction === true ? (this.$router.push({path: "/setting"})) : console.log("no");;
+    timer() {
+        if (this.time > 0) {
+              this.time--;
+              this.btntxt=this.time+"s重新获取";
+              setTimeout(this.timer, 1000);
+        } else{
+              this.time=0;
+              this.btntxt="获取验证码";
+              this.disabled=false;
+        }
     },
+    //手机登录
+    loginAction(code){
+      this.$store.dispatch('login/requestLoginPhoneCode',{phone:this.phone, code:code});
+      // this.checkAction === true ? (this.$router.push({path: "/setting"})) : console.log("no");
+    },
+    
+
+    //测试
+    /* homeData(){
+      this.$store.dispatch('login/requestHomePhoneCode');
+    } */
+  },
+    //更新视图
+    created(){
+      // this.homeData()
+    }
   }
-}
+
 </script>
 
 <style lang="scss" scoped>
@@ -130,6 +168,7 @@ export default {
             width: 72px;
             border-radius: 8px 8px;
             background: #fff;
+            font-size: 12px;
           }
       }
       .box-center2{

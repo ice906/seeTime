@@ -1,3 +1,4 @@
+const HOST = "http://localhost:8080";
 //启动页
 const GET_STARTUP_IMAGE = "/imageController/getStartupImage";
 
@@ -47,5 +48,6 @@ export default {
     UPDATE_INFO,
     DEBUNK,
     MARK,
-    LOGOUT
+    LOGOUT,
+    HOST
 }

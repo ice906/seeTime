@@ -4,6 +4,7 @@
         <span class="terms">今日大暑</span> 
         <router-link to="/home/detial">
             <span class="detial"></span>
+            <img src=qiImg />
         </router-link>
     
         <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
@@ -18,6 +19,7 @@
 <script>
 
 import footer from '../../components/footer'
+import {mapState} from 'vuex'
 
 export default {
     name:'Home',
@@ -29,10 +31,23 @@ export default {
     
     }
     },
+    computed: {
+      ...mapState({
+          qiImg: state=>state.home.qiImg
+      })  
+    },
     methods: {
         swiperright: function () {
         this.$router.push({'path':'/diagram'});
+        },
+
+        homeData(){
+            this.$store.dispatch('home/requestHomeCode');
         }
+
+    },
+    created(){
+        this.homeData();
     }
 }
 </script>
