@@ -6,14 +6,14 @@ import diagram from './diagramRouter'
 import dictum from './dictumRouter'
 
 Vue.use(Router);
-
+ 
 const routes = [
   home,
   diagram,
   dictum,
   {
     path: '/',
-    redirect:'/home'
+    redirect:'/index'
   }
 ];
 

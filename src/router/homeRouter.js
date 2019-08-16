@@ -6,7 +6,10 @@ export default {
    /*  path: '/index',
     component: ()=>import('../pages/index'), */
     children:[
-        
+        {
+            path: '/index',
+            component: ()=>import('../pages/index'),
+        },
         //详情
         {
             path: '/home/detial',

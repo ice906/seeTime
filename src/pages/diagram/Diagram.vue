@@ -1,41 +1,62 @@
-<template>
-<div>
-    <div class="page" id="diagram">
-        <router-link to="/diagram/scenery" class="scenery">
-            <h1>鹰始鸷</h1>
-        </router-link>
-        <router-link to="/diagram/scenery" class="date">
-            <span>荷月</span>
-            <span>六月十九</span>
-        </router-link>
-        <div class="time">
-            <span>07</span>
-            <span>21</span>
-            <img src="../../../public/images/home_to_right/today-line@3x.png" alt="">
-        </div>
-        <router-link to="/home" class="return">
-            <span>回到今天</span>
-            <img src="../../../public/images/home_to_right/today_return_icon@3x.png" alt="">
-        </router-link>
-        <router-link to="/diagram/photoShow" class="photo">
-            <div class="text">
-                 <span>“星星发亮，是为了让每一个人有一天都能找到属于自己的星星。”</span>
-            </div>
-            <h1>「圣埃克苏佩里/作家」</h1>
-            <div class="detail">
-                <img src="../../../public/images/home_to_right/yesterday_eye_icon@3x.png" alt="">
-            </div>
-        </router-link>
+<template> 
+<v-touch @swipeleft="swiperleft" @swiperight="swiperright" class="wrapper">
+
+<div class="page" id="diagram">
+    <router-link to="/diagram/scenery" class="scenery">
+        <h1>鹰始鸷</h1>
+    </router-link>
+    <router-link to="/diagram/scenery" class="date">
+        <span>荷月</span>
+        <span>六月十九</span>
+    </router-link>
+    <div class="time"> 
+        <span>07</span>
+        <span>21</span>
+        <img src="../../../public/images/home_to_right/today-line@3x.png" alt="">
     </div>
+    <router-link to="/home" class="return">
+        <span>回到今天</span>
+        <img src="../../../public/images/home_to_right/today_return_icon@3x.png" alt="">
+    </router-link>
+    <router-link to="/diagram/photoShow" class="photo">
+        <div class="text">
+                <span>“星星发亮，是为了让每一个人有一天都能找到属于自己的星星。”</span>
+        </div>
+        <h1>「圣埃克苏佩里/作家」</h1>
+        <div class="detail">
+            <img src="../../../public/images/home_to_right/yesterday_eye_icon@3x.png" alt="">
+        </div>
+    </router-link>
     <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
         <router-view></router-view>
     </transition>
+    <see-bottom></see-bottom>
 </div>
+
+</v-touch>
 </template>
 
 <script>
-export default {
+import footer from '../../components/footer'
 
+export default {
+    name: 'Diagram',
+    components: {
+        [footer.name]: footer,
+    },
+    data () {
+    return {
+    
+    }
+    },
+    methods: {
+        swiperleft: function () {
+        this.$router.push({'path':'/home'});
+        },
+        swiperright: function () {
+            this.$router.push({'path':'/dictum'});
+        },
+    }
 }
 </script>
 

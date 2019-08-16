@@ -1,37 +1,54 @@
 <template>
-<div>
-    <div class="page" id="dictum">
-        <router-link to="/dictum/scenery" class="scenery">
-           <h1>腐草为萤</h1>
-        </router-link>
-        <router-link to="/dictum/scenery" class="date">
-             <span>荷月</span>
-            <span>六月二十</span>
-        </router-link>
-        <div class="time">
-            <span>07</span>
-            <span>22</span>
-            <img src="../../../public/images/home_to_right/today-line@3x.png" alt="">
-        </div>
-        <router-link to="/home" class="return">
-            <span>回到今天</span>
-            <img src="../../../public/images/home_to_right/today_return_icon@3x.png" alt="">
-        </router-link>
-        <router-link to="/dictum/story" class="story">
-            <img src="../../../public/images/home_to_right/richu.png" alt="">
-            <img src="../../../public/images/home_to_right/today_eye_icon@3x.png" alt="">     
-            <p>自然的声音</p>       
-        </router-link>
+<v-touch @swipeleft="swiperleft" class="wrapper">
+
+<div class="page" id="dictum">
+    <router-link to="/dictum/scenery" class="scenery">
+        <h1>腐草为萤</h1>
+    </router-link>
+    <router-link to="/dictum/scenery" class="date">
+            <span>荷月</span>
+        <span>六月二十</span>
+    </router-link>
+    <div class="time"> 
+        <span>07</span>
+        <span>22</span>
+        <img src="../../../public/images/home_to_right/today-line@3x.png" alt="">
     </div>
+    <router-link to="/home" class="return">
+        <span>回到今天</span>
+        <img src="../../../public/images/home_to_right/today_return_icon@3x.png" alt="">
+    </router-link>
+    <router-link to="/dictum/story" class="story">
+        <img src="../../../public/images/home_to_right/richu.png" alt="">
+        <img src="../../../public/images/home_to_right/today_eye_icon@3x.png" alt="">     
+        <p>自然的声音</p>       
+    </router-link>
     <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
         <router-view></router-view>
     </transition>
+    <see-bottom></see-bottom>
 </div>
+</v-touch>
 </template>
 
 <script>
-export default {
+import footer from '../../components/footer'
 
+export default {
+    name: 'Dictum',
+    components: {
+        [footer.name]: footer,
+    },
+    data () {
+    return {
+    
+    }
+    },
+    methods: {
+        swiperleft: function () {
+        this.$router.push({'path':'/diagram'});
+        },
+    }
 }
 </script>
 

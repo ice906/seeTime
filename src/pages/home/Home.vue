@@ -1,27 +1,44 @@
 <template>
-
+<v-touch @swiperight="swiperright" class="wrapper">
 <div class="page" id="home">
+        <span class="terms">今日大暑</span> 
+        <router-link to="/home/detial">
+            <span class="detial"></span>
+        </router-link>
+    
+        <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+            <router-view></router-view>
+        </transition>
+        <see-bottom></see-bottom>
 
-    <span class="terms">今日大暑</span>
-
-    <router-link to="/home/detial">
-        <span class="detial"></span>
-    </router-link>
-
-    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
-        <router-view></router-view>
-    </transition>
 </div>
-
+</v-touch>
 </template>
 
 <script>
+
+import footer from '../../components/footer'
+
 export default {
+    name:'Home',
+    components: {
+        [footer.name]: footer,
+    },
+    data () {
+    return {
     
+    }
+    },
+    methods: {
+        swiperright: function () {
+        this.$router.push({'path':'/diagram'});
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+
 #home{
     height: 100%;
     position: relative;
@@ -49,5 +66,9 @@ export default {
         bottom: 24%;
         right: 13%;
     }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    } 
 }
 </style>

@@ -1,19 +1,22 @@
 <template>
 <div id="app">
-    <router-view></router-view>
-    <see-bottom></see-bottom>
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+        <router-view></router-view>
+    </transition>
 </div>
 </template>
-
+  
 <script>
-import footer from './components/footer'
+import Index from './pages/index'
 export default {
     components: {
-        [footer.name]: footer
-    }
+        Index,
+    },
 }
 </script>
 
 <style>
-
+.wrapper{
+    height: 100%;
+}
 </style>

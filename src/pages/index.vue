@@ -1,27 +1,48 @@
 <template>
-    <div class="page subpage" id="wrap">
+<v-touch class="wrapper">
 
-        <router-link to="/home">
-            <div class="enter">enter</div>
-        </router-link>
-        
+<div class="page subpage" id="wrap">
+
+    <div class="enter" @click="clickAction">
+        进入
     </div>
-</template>
-
-<script>
-export default {
     
+</div>
+
+</v-touch>
+</template>
+ 
+<script>
+
+export default {
+    name:'Index',
+    components: {
+  },
+  methods: {
+        clickAction: function () {
+        this.$router.push({'path':'/home'});
+        },
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 #wrap{
-    background: url('/images/home/banner@3x.png') no-repeat;
+    background: url('/images/home/start.jpg') no-repeat;
     background-size: cover;
+    height: 100%;
     .enter{
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-50%,0);
+
+        a{
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            font-family:"微软雅黑","黑体","宋体";
+        }
     }
 }
 </style>
