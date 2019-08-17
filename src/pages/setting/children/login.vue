@@ -11,22 +11,22 @@
               <div class="input1">
                   手机号<input type="text" v-model="phone">
               </div>
-              <button class="btn" @click = "sendAction" :disabled="disabled">{{btntxt}}</button>
+              <el-button type="success" @click = "sendAction" :disabled="disabled" :plain="true">{{btntxt}}</el-button >
             </div>
             <div class="box-center2">
-                  验证码<input type="text" placeholder="发送验证码后自动获取" :value="code">
+                  验证码<input type="text" placeholder="发送验证码后自动获取" :value="code" >
             </div>
 
             <div class="box2">
-                <button class="btnAction" @click="loginAction(code)" >登录</button>
+                <button class="btnAction" @click="loginAction(code,isLogin)" >登录</button>
             </div>
 
             <div class="box3">
-              <input type="checkbox" v-model="checkAction" /><span>已完成阅读并同意<a href="#">《用户协议》</a></span>
+              <el-checkbox type="checkbox" v-model="checkAction" /><span>已完成阅读并同意<a href="#">《用户协议》</a></span></el-checkbox>
             </div>
 
             <footer class="foot">
-                <a class="foot-top">或使用快速登录</a>
+                <el-button class="foot-top" @click = "other">或使用快速登录</el-button>
                 <div class="foot-bottom">
                     <ul class="list">
                       <li  v-for="item in lists" :key="item.id" class="item">
@@ -47,12 +47,15 @@
 import Header from "../common/header";
 import { setInterval } from 'timers';
 import {mapState} from "vuex"
+import { Message } from 'element-ui';
 export default {
   components:{
     [Header.name]: Header,
+    [Message.name]: Message
   },
   computed:{
     ...mapState({
+      isLogin:state => state.login.isLogin,
       code:state => state.login.code,
     })
   },
@@ -74,16 +77,30 @@ export default {
      // 发送验证码
     sendAction(){
         var reg=11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
-        //var url="/nptOfficialWebsite/apply/sendSms?mobile="+this.ruleForm.phone;
         if(this.phone==''){
-            alert("请输入手机号码");
+            this.$message({
+              message: '手机号码不能为空!',
+              type: 'warning',
+              center: true,
+          });
         }else if(!reg.test(this.phone)){
-            alert("手机格式不正确");
+            this.$message({
+              message: '手机号码格式不正确!',
+              type: 'warning',
+              center: true,
+          });
         }else{
-            this.time=5;
+            this.time=60;
             this.disabled=true;
             this.timer();
             this.$store.dispatch('login/requestLoginCode',{phone:String(this.phone)});
+
+            this.$message({
+              showClose: true,
+              message: '发送成功啦!~',
+              type: 'success',
+              center: true,
+          });
         }
     },
     timer() {
@@ -98,19 +115,48 @@ export default {
         }
     },
     //手机登录
-    loginAction(code){
-      this.$store.dispatch('login/requestLoginPhoneCode',{phone:this.phone, code:code});
-      // this.checkAction === true ? (this.$router.push({path: "/setting"})) : console.log("no");
+    loginAction(code,isLogin){
+      //把手机号码和验证码提交到后台
+      this.$store.dispatch('login/requestLoginPhoneCode',{phone:String(this.phone), code:code});
+
+      if (this.checkAction === true && isLogin===true) {
+          this.$message({
+                showClose: true,
+                message: '恭喜你登录成功啦!~',
+                type: 'success',
+                center: true,
+            });
+        if (!window.localStorage) {
+          this.$message.error({
+                message:'浏览器不支持localStorage哦！~',
+                type: 'success',
+                center: true,
+            })
+        }else{
+           localStorage.setItem('phone',this.phone);
+        }
+        this.$router.back()
+      }else{
+        this.$message.error({
+            message:'登录失败！~',
+            type: 'success',
+            center: true,
+          });
+      }
     },
-    
+    //其他方式登录
+    other(){
+        this.$message('抱歉!暂时只支持手机登录!~');
+    },
 
     //测试
-    /* homeData(){
-      this.$store.dispatch('login/requestHomePhoneCode');
-    } */
+    homeData(){
+
+    }
   },
     //更新视图
     created(){
+      // console.log(userPhone);
       // this.homeData()
     }
   }
@@ -149,7 +195,7 @@ export default {
       justify-content:space-around;
       .input1{
         height: 35px;
-        width: 260px;
+        width: 230px;
         border-bottom: 1px solid #888;
         font-size: 15px;
         color: #666;
@@ -215,7 +261,7 @@ export default {
     }
     .foot{
       text-align: center;
-      margin-top: 75px;
+      margin-top: 30px;
       a{
         font-size: 14px;
         color: #878787;

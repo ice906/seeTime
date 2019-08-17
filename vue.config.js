@@ -2,13 +2,13 @@ module.exports = {
     devServer: {
         proxy: {
             "userController": {
-                target: "http://77475x.natappfree.cc",
+                target: "http://zuukfc.natappfree.cc",
                 changeOrigin: true
-            }, 
+            },
             "imageController": {
-                target: "http://77475x.natappfree.cc",
+                target: "http://zuukfc.natappfree.cc",
                 changeOrigin: true
-            }, 
+            },
         }
     }
 }

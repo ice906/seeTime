@@ -4,13 +4,24 @@ import api from "../../request/api"
 export default {
     namespaced: true,
     state:{
+        //是否登录
+        isLogin:false,
         //验证码
         code:[],
+        //用户信息
+        // userPhone:[]
     },
 
     mutations: {
+        //设置验证码
         setCodeLogin(state,params){
             state.code = params;
+        },
+        //登录成功
+        setLoginPhoneCode(state,params){
+            if (params !== "") {
+                state.isLogin = true;
+            }
         }
     },
 
@@ -22,15 +33,9 @@ export default {
         },
         //手机登录
         async requestLoginPhoneCode(context,phoneCode){
-            console.log(phoneCode);
-            let data = await post(api.GET_LOGIN, phoneCode);
-            console.log(data);
-            // context.commit("setCodeLogin",data);
+            let data = await post(api.GET_LOGIN, phoneCode)
+            // let newData = [data.phone = phoneCode.phone];
+            context.commit("setLoginPhoneCode",data);
         },
-        //测试
-       /*  async requestHomePhoneCode(context){
-            let {data} = await get(api.GET_STARTUP_IMAGE);
-            console.log(data);
-        }, */
     }
 }

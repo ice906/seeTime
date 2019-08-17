@@ -8,7 +8,7 @@
         <div class="login">
              <div>
                 <img src="../../../public/images/setting/img_login@3x.png" alt="">
-                <router-link to="/setting/login" class="loginAction">请登录</router-link>
+                <router-link to="/setting/login" class="loginAction">{{isLogin ? username : user}}</router-link>
              </div>
         </div>
 
@@ -27,11 +27,32 @@
 
 <script>
 import Header from "./common/header"
+import {mapState} from "vuex"
 export default {
-   components:{
+    namespaced: true,
+    components:{
     [Header.name]: Header,
-  }
-
+  },
+   computed:{
+    ...mapState({
+      isLogin:state => state.login.isLogin,
+      userPhone:state => state.login.userPhone,
+    })
+},
+  data(){
+    return{
+      username:'',
+      user:"请登录"
+    }
+  },
+  mounted(){
+        if(!window.localStorage){
+            alert('浏览器不支持localStorage');
+        }else{
+            var data = localStorage.getItem('phone');
+            this.username = data;
+        }
+    }
 }
 </script>
 

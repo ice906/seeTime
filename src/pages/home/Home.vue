@@ -42,12 +42,12 @@ export default {
         },
 
         homeData(){
-            this.$store.dispatch('home/requestHomeCode');
+            // this.$store.dispatch('home/requestHomeCode');
         }
 
     },
     created(){
-        this.homeData();
+        // this.homeData();
     }
 }
 </script>

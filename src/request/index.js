@@ -22,9 +22,9 @@ export const get = (url, params = {})=>{
 export const post = async(url, params = {})=>{
     try {
         let response = await axios.post(url, params, {
-            baseURL: "api.Host"
+            baseURL: "http://localhost:8080"
         });
-        if (response.status === 200 && response.data.status === 0) {
+        if (response.request.status === 200 && response.request.timeout === 0) {
             return response.data;
         }else{
             throw new Error()
