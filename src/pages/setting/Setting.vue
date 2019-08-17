@@ -19,9 +19,9 @@
       </div>
 
     </div>
-        <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
-            <router-view></router-view>
-        </transition>
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+        <router-view></router-view>
+    </transition>
   </div>
 </template>
 

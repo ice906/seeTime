@@ -1,9 +1,6 @@
 <template>
 <div class="home-comment page subpage">
-
-    <router-link to="/home">
-        <div class="back"></div>
-    </router-link>
+        <div class="back" @click="backAction"></div>
     <div class="thumb-btn">
 
         <em>通知中心</em>
@@ -54,6 +51,11 @@ export default {
                 {img:"/images/notification_center/Center_user3@3x.png", message:"穿破的格子衫", tip:"仁者不忧，威者不努，信者不言", com:"燕雀安知鸿鹄之志！", time:"2019/8/15 11:44", id:7},
                 {img:"/images/notification_center/Center_user4@3x.png", message:"穿破的格子衫", tip:"仁者不忧，威者不努，信者不言", com:"燕雀安知鸿鹄之志！", time:"2019/8/15 11:44", id:8}
             ]      
+        }
+    },
+    methods: {
+        backAction(){
+            this.$router.back();
         }
     }
 }

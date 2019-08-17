@@ -1,8 +1,6 @@
 <template>
 <div class="home-thumbs page subpage">
-    <router-link to="/home">
-        <div class="back"></div>
-    </router-link>
+        <div class="back" @click="backAction"></div>
     <div class="thumb-btn">
 
         <em>通知中心</em>
@@ -46,6 +44,11 @@ export default {
                 {img:"/images/notification_center/Center_user1@3x.png", message:"穿破的格子衫", tip:"仁者不忧，威者不努，信者不言", time:"今天17.52", id:7},
                 {img:"/images/notification_center/Center_user1@3x.png", message:"穿破的格子衫", tip:"仁者不忧，威者不努，信者不言", time:"今天17.52", id:8}
             ]      
+        }
+    },
+    methods: {
+        backAction(){
+            this.$router.back();
         }
     }
 }
