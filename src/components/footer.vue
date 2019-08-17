@@ -6,7 +6,7 @@
             <i>{{item.id}}</i>
         </router-link>
     </ul>
-    <router-link to="/home/setting">
+    <router-link to="/setting/mine">
         <span></span>
     </router-link>
 </div>
@@ -24,6 +24,19 @@ export default {
                 {id:4, bgImage:'/images/home/today_share_icon@3x.png', path:'/home/share'}
             ]
         }
+    },
+    computed: {
+        
+    },
+    methods: {
+        //获取通知中心数据
+        NoticCenter(){
+            this.$store.dispatch('footer/requestNoticCenter');
+        }
+        //
+    },
+    created () {
+        this.NoticCenter();
     }
 }
 </script>

@@ -1,11 +1,11 @@
 const HOST = "http://localhost:8080";
 //启动页
 const GET_STARTUP_IMAGE = "/imageController/getStartupImage";
-
+ 
 //节气
 const GET_TOPIC = "/userController/getTopic";
 
-//点击节气详情
+//点击节气详情 
 const GET_TOPIC_INFO = "/userController/getTopicInfo";
 
 //通知中心

@@ -4,14 +4,13 @@
         <span class="terms">今日大暑</span> 
         <router-link to="/home/detial">
             <span class="detial"></span>
-            <img src=qiImg />
         </router-link>
     
         <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
             <router-view></router-view>
         </transition>
         <see-bottom></see-bottom>
-
+ 
 </div>
 </v-touch>
 </template>
@@ -41,13 +40,20 @@ export default {
         this.$router.push({'path':'/diagram'});
         },
 
-        homeData(){
+
+        //获取启动页图片
+        /* homeData(){
             this.$store.dispatch('home/requestHomeCode');
+        }, */
+        //获取节气数据
+        homeTerms(){
+            this.$store.dispatch('home/requestHomeTerms');
         }
 
     },
     created(){
-        this.homeData();
+        // this.homeData();
+        this.homeTerms();
     }
 }
 </script>

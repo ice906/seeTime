@@ -135,7 +135,7 @@ export default {
       width: 100%;
       .box{
       h2{
-        color: #ffffff;
+        color: #333;
         font-size: 27px;
         margin-top: 65px;
         margin-left: 38px;

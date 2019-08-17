@@ -21,14 +21,14 @@ export default {
 <style lang="scss">
 .header{
       position: absolute;
-      top: 0;
+      top: 2%;
       left: 0;
       height: 44px;
       width: 100%;
       .left{
+        width: 25px;
         img{
-        width: 33px;
-        height: 33px;
+        width:25px;
         display: block;
         padding: 5px 0 0 10px;
         }
