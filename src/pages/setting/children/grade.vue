@@ -30,28 +30,40 @@
                 <textarea></textarea>
             </i>
         </div>
-        <div class="star">
-            <em>
-                <img src="/images/app_grade/icon_collect_star1@3x.png" alt="">
-                <img src="/images/app_grade/icon_collect_star1@3x.png" alt="">
-                <img src="/images/app_grade/icon_collect_star1@3x.png" alt="">
-                <img src="/images/app_grade/icon_collect_star1@3x.png" alt="">
-                <img src="/images/app_grade/icon_collect_star1@3x.png" alt="">
-            </em>
-            <em>轻点星形状来评分</em>
-        </div>
         
     </div>
+    <div class="star">
+        <van-rate 
+        v-model="value"
+        :size="30"
+        color="#f44"
+        allow-half
+        void-icon="star"
+        void-color="#fff"
+        />
+    </div>
+    <p>轻点星形状来评分</p>
 
 </div>
 
 </template>
 
 <script>
+import Vue from 'vue';
+import { Rate } from 'vant';
+
+Vue.use(Rate);
 import Header from "../common/header"
+import 'vant/lib/rate/style';
+
 export default {
    components:{
     [Header.name]: Header,
+  },
+  data() {
+    return {
+      value: 2.5
+    };
   }
 
 }
@@ -110,17 +122,13 @@ export default {
     }
     .star{
         margin-top: 50px;
-        em{
-            padding:0 70px;
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            font-size: 13px;
-            color:#999;
-            img{
-                width: 30px;
-            }
-        }
-    }
+        text-align: center;
+     }
+     p{
+         margin-top: 5px;
+         font-size: 13px;
+         color: #999;
+         text-align: center;
+     }
 }
 </style>

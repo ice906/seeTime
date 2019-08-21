@@ -23,9 +23,9 @@ export default {
         async requestNoticCenter(context){
             let {data} = await get(api.GET_NOTICE_COMMENT_PAGE);
             console.log(data);
-            /* let newData = data.map((data)=>(data));
+            let newData = data.map((data)=>(data));
             console.log(newData);
-            context.commit("setQidongImg",newData); */
+            context.commit("setQidongImg",newData);
         },
 
     }

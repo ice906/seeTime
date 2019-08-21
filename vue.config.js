@@ -9,6 +9,10 @@ module.exports = {
                 target: "http://zuukfc.natappfree.cc",
                 changeOrigin: true
             },
+            '/ajax':{
+                target:"http://localhost:7000",
+                changeOrgin:true
+            }
         }
     }
 }

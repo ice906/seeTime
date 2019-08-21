@@ -3,7 +3,7 @@
     <ul>
         <router-link v-for="item in homeList" :key="item.id" :to="item.path">
             <em :style="{backgroundImage:'url('+item.bgImage+')'}"></em>
-            <i>{{item.id}}</i>
+            <i>{{item.count}}</i>
         </router-link>
     </ul>
     <router-link to="/setting/mine">
@@ -18,10 +18,10 @@ export default {
     data(){
         return {
             homeList: [
-                {id:1, bgImage:'/images/home/today_like_icon@3x.png', path:'/home/thumbs'},
-                {id:2, bgImage:'/images/home/today_collect_icon@3x.png', path:'/home/collection'},
-                {id:3, bgImage:'/images/home/today_comment_icon@3x.png', path:'/home/comment'},
-                {id:4, bgImage:'/images/home/today_share_icon@3x.png', path:'/home/share'}
+                {id:1, count:8, bgImage:'/images/home/today_like_icon@3x.png', path:'/home/thumbs'},
+                {id:2, count:2, bgImage:'/images/home/today_collect_icon@3x.png', path:'/home/collection'},
+                {id:3, count:8, bgImage:'/images/home/today_comment_icon@3x.png', path:'/home/comment'},
+                {id:4, count:'', bgImage:'/images/home/today_share_icon@3x.png', path:'/home/share'}
             ]
         }
     },

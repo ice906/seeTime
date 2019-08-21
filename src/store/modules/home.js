@@ -13,7 +13,7 @@ export default {
             state.img = params;
         }, */
         setHomeTerms(state,params){
-            state.terms = params;
+            state.termData = params;
         }
     },
     actions: {
@@ -30,9 +30,9 @@ export default {
         async requestHomeTerms(context){
             let {data} = await get(api.GET_TOPIC);
             console.log(data);
-            /* let newData = data.map((data)=>(data));
+            let newData = data.list;
             console.log(newData);
-            context.commit("setQidongImg",newData); */
+            context.commit("setHomeTerms",newData);
         },
 
     }

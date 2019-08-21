@@ -3,7 +3,8 @@ const HOST = "http://localhost:8080";
 const GET_STARTUP_IMAGE = "/imageController/getStartupImage";
  
 //节气
-const GET_TOPIC = "/userController/getTopic";
+const GET_TOPIC = "/ajax/home";
+// const GET_TOPIC = "/userController/getTopic";
 
 //点击节气详情 
 const GET_TOPIC_INFO = "/userController/getTopicInfo";

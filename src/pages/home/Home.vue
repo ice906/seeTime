@@ -6,6 +6,10 @@
             <span class="detial"></span>
         </router-link>
     
+        <!-- <li v-for="item in termData" :key="item.pic">
+            <img :src="item.pic" alt="">
+        </li> -->
+
         <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
             <router-view></router-view>
         </transition>
@@ -14,11 +18,13 @@
 </div>
 </v-touch>
 </template>
-
+ 
 <script>
 
 import footer from '../../components/footer'
+
 import {mapState} from 'vuex'
+
 
 export default {
     name:'Home',
@@ -32,12 +38,12 @@ export default {
     },
     computed: {
       ...mapState({
-          qiImg: state=>state.home.qiImg
+          termData: state=>state.home.termData
       })  
     },
     methods: {
         swiperright: function () {
-        this.$router.push({'path':'/diagram'});
+            this.$router.push({'path':'/diagram'});
         },
 
 

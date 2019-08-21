@@ -5,7 +5,6 @@ import home from './homeRouter'
 import diagram from './diagramRouter'
 import dictum from './dictumRouter'
 import setting from './settingRouter'
-import test from './test'
 
 Vue.use(Router);
  
@@ -14,7 +13,6 @@ const routes = [
   diagram,
   dictum,
   setting,
-  test,
   {
     path: '/',
     redirect:'/index'
